@@ -4,13 +4,14 @@
   "description": "Section 4: building RESTFUL API's Using Express",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.1"
-  }
+    "joi": "^14.3.1"
+  },
+  "devDependencies": {}
 }
