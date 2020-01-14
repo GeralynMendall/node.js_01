@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const Joi = require('joi');
 const logger = require('./logger');
+const courses = require('./courses');
 const express = require('express');  
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(helmet());
+app.use('/api/courses', courses);
 
 // Configuration
 console.log('Application Name: ' + config.get('name'));
@@ -26,12 +28,6 @@ if (app.get('env') === 'development'){
 }
 
 app.use(logger);
-
-const courses = [
-    {id: 1, name: 'course1'},
-    {id: 2, name: 'course2'},
-    {id: 3, name: 'course3'},
-];
 
 app.get('/', (req, res) => {
     res.render('index', {title: 'My Express App', message: 'Hello'});
