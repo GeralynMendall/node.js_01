@@ -7,11 +7,11 @@ const courses = [
     {id: 3, name: 'course3'},
 ];
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
     res.send(courses);
 });
 
-app.post('/', (req, res) => {
+router.post('/', (req, res) => {
  const {error} = validateCourse(req.body);
  if (error) return res.status(400).send(error.details[0].message);
 
@@ -23,7 +23,7 @@ app.post('/', (req, res) => {
     res.send(course);
 });
 
-app.put('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     const course = courses.find(c => c.id === parseInt(req.params.id));
     if (!course) return res.status(404).send('The course with the given ID was not found.');
 
@@ -34,7 +34,7 @@ app.put('/:id', (req, res) => {
     res.send(course);
 });
 
-app.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const course = courses.find(c => c.id === parseInt(req.params.id));
     if (!course) res.status(404).send('The course with the given ID was not found.');
 
@@ -44,7 +44,7 @@ app.delete('/:id', (req, res) => {
     res.send(course);
 });
 
-app.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     const course = courses.find(c => c.id === parseInt(req.params.id));
     if (!course) return res.status(404).send('The course with the given ID was not found.');
     res.send(course);
