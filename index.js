@@ -7,12 +7,15 @@ const logger = require('./logger');
 const express = require('express');  
 const app = express();
 
+app.set('view engine', 'pug');
+app.set('views', '/views');
+
 app.use(express.json());
-app.use(express.urlencoded( {extended: true} ));
+app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(helmet());
 
-Configuration
+// Configuration
 console.log('Application Name: ' + config.get('name'));
 console.log('Mail Server: ' + config.get('mail.host'));
 console.log('Mail Password: ' + config.get('mail.password'));
@@ -31,7 +34,7 @@ const courses = [
 ];
 
 app.get('/', (req, res) => {
-    res.send('Hello World');
+    res.render('index', {title: 'My Express App', message: 'Hello'});
 });
 
 app.get('/api/courses', (req, res) => {
