@@ -6,7 +6,7 @@ const Joi = require('joi');
 const logger = require('./middleware/logger');
 const courses = require('./routes/courses');
 const home = require('./routes/home');
-const express = require('express');  
+const express = require('express'); 
 const app = express();
 
 app.set('view engine', 'pug');
